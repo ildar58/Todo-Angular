@@ -1,0 +1,60 @@
+.filter {
+  display: grid;
+  width: 100%;
+  grid-auto-rows: 60px;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 10px;
+
+  &-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    &-label {
+      flex: 1;
+    }
+
+    &-control {
+      flex: 3;
+
+      ::ng-deep .mat-form-field-wrapper {
+        padding-bottom: 0;
+      }
+    }
+
+    &-checkbox {
+      flex: 1;
+    }
+
+    .sort-label {
+      display: flex;
+      justify-content: flex-end;
+
+      ::ng-deep .mat-sort-header-content {
+        border-bottom: 1px solid black;
+      }
+    }
+
+    &__search {
+      grid-column: span 2;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+      .full-width {
+        flex: 5;
+      }
+    }
+  }
+}
+
+.unselectable {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Chrome/Safari/Opera */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+                           not supported by any browser */
+
+}
+

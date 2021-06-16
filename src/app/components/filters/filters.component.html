@@ -1,0 +1,52 @@
+<mat-card class="filter unselectable" [formGroup]="filterForm">
+  <div class="filter-item">
+    <span class="filter-item-label">
+      Фильтр по приоритету:
+    </span>
+    <mat-form-field class="filter-item-control" appearance="outline" formControlName="priority">
+      <mat-select value="">
+        <mat-option *ngFor="let item of priorityLevels" [value]="item.alias">{{item.name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div class="filter-item">
+    <span class="filter-item-label">
+      Фильтр по статусу:
+    </span>
+    <ng-container formGroupName="statusTypes">
+      <mat-checkbox class="filter-item-checkbox" *ngFor="let item of statusTypes" [formControlName]="item.alias">
+        {{item.name}}
+      </mat-checkbox>
+    </ng-container>
+  </div>
+
+  <ng-container matSort>
+    <div class="filter-item">
+      <span class="filter-item-label">
+        Сортировка по дате:
+      </span>
+      <span class="filter-item-control sort-label" mat-sort-header="sortByDate">
+        дата создания
+      </span>
+    </div>
+
+    <div class="filter-item">
+      <span class="filter-item-label">
+        Сортировка по приоритету:
+      </span>
+      <span class="filter-item-control sort-label" mat-sort-header="sortByPriority">
+        приоритет
+      </span>
+    </div>
+  </ng-container>
+
+  <div class="filter-item__search">
+    <span class="filter-item-label">
+      Фильтр по приоритету:
+    </span>
+    <mat-form-field appearance="outline" class="filter-item-control full-width" formControlName="text">
+      <input matInput placeholder="Начните вводить...">
+    </mat-form-field>
+  </div>
+</mat-card>
