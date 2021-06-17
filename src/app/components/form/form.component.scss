@@ -1,0 +1,41 @@
+.container {
+  width: 100%;
+}
+
+.form {
+  display: flex;
+  align-items: flex-end;
+
+  ::ng-deep .mat-form-field-wrapper {
+    padding-bottom: 0;
+  }
+
+  ::ng-deep .mat-form-field-infix {
+    border-top: .5em solid transparent;
+  }
+
+  ::ng-deep .mat-select-arrow-wrapper {
+    vertical-align: baseline;
+  }
+
+  :not(:last-child) {
+    margin-right: 10px;
+  }
+
+  &-item-priority {
+    flex: 1;
+    height: 50px;
+  }
+
+  &-item-text {
+    height: 50px;
+    flex: 3
+  }
+
+  &-item-btn {
+    height: 46.5px;
+    flex: 1;
+  }
+}
+
+

@@ -1,1 +1,5 @@
-<p>list works!</p>
+<mat-card class="container">
+  <todo-card *ngFor="let item of tasks"
+             [task]="item">
+  </todo-card>
+</mat-card>

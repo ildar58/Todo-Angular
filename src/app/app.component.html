@@ -1,3 +1,5 @@
 <div class="container">
-  <todo-filters></todo-filters>
+  <todo-form></todo-form>
+  <todo-filters [formControl]="control"></todo-filters>
+  <todo-list [filterProps]="control.value"></todo-list>
 </div>

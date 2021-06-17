@@ -1,14 +1,7 @@
-export const priorityLevels = Object.freeze([
-  {
-    alias: 'low',
-    name: 'Низкий'
-  },
-  {
-    alias: 'medium',
-    name: 'Средний'
-  },
-  {
-    alias: 'high',
-    name: 'Высокий'
-  }
-])
+import {PriorityLevel} from '../enums/priority-level.enum';
+
+export const priorityLevels = Object.freeze({
+  [PriorityLevel.Low]: 'Низкий',
+  [PriorityLevel.Medium]: 'Средний',
+  [PriorityLevel.High]: 'Высокий',
+});

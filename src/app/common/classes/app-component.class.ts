@@ -3,7 +3,7 @@ import {takeUntil} from 'rxjs/operators';
 import {Component} from '@angular/core';
 
 @Component({
-  template: ''
+  template: '',
 })
 export abstract class AppComponentClass {
   protected _destroy$$: Subject<void> = new Subject();

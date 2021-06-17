@@ -1,0 +1,33 @@
+<div class="card">
+  <span class="card-priority" [ngClass]="prioritySelectors">
+    {{priorityLevels[task.priority]}}
+  </span>
+
+  <div class="card-content" [ngClass]="statusSelectors">
+    <div class="card-content-info">
+      <span class="card-content-info-text">
+        {{task.text}}
+      </span>
+
+      <span class="card-content-info-date">
+        {{task.date | date:'medium'}}
+      </span>
+    </div>
+
+    <div class="card-content-buttons">
+      <button mat-icon-button color="primary" (click)="changeStatus(statusType.Success)">
+        <mat-icon>check</mat-icon>
+      </button>
+
+      <button mat-icon-button color="warn" (click)="changeStatus(statusType.Failed)">
+        <mat-icon>clear</mat-icon>
+      </button>
+    </div>
+  </div>
+
+  <div class="card-delete-btn">
+    <button mat-icon-button (click)="deleteTask()">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </div>
+</div>

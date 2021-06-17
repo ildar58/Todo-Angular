@@ -5,7 +5,7 @@
     </span>
     <mat-form-field class="filter-item-control" appearance="outline">
       <mat-select value="" formControlName="priority">
-        <mat-option *ngFor="let item of priorityLevels" [value]="item.alias">{{item.name}}</mat-option>
+        <mat-option *ngFor="let item of priorityLevels | keyvalue" [value]="item.key">{{item.value}}</mat-option>
       </mat-select>
     </mat-form-field>
   </div>

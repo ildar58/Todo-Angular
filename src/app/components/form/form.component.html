@@ -1,1 +1,13 @@
-<p>form works!</p>
+<mat-card class="container">
+  <form class="form" [formGroup]="form" (ngSubmit)="submit()">
+    <mat-form-field class="form-item-priority" appearance="outline">
+      <mat-select value="" formControlName="priority" placeholder="Выберите приоритет...">
+        <mat-option *ngFor="let item of priorityLevels | keyvalue" [value]="item.key">{{item.value}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="form-item-text" appearance="outline">
+      <input matInput formControlName="text" placeholder="Введите текст задания...">
+    </mat-form-field>
+    <button type="submit" class="form-item-btn" mat-flat-button color="primary">Добавить</button>
+  </form>
+</mat-card>

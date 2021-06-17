@@ -1,5 +1,7 @@
-export const priorityLevelsNumber= Object.freeze({
-  low: 1,
-  medium: 2,
-  high: 3
-})
+import {PriorityLevel} from '../enums/priority-level.enum';
+
+export const priorityLevelsNumber = Object.freeze({
+  [PriorityLevel.Low]: 1,
+  [PriorityLevel.Medium]: 2,
+  [PriorityLevel.High]: 3,
+});

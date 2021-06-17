@@ -1,0 +1,70 @@
+.card {
+  display: grid;
+  width: 100%;
+  grid-template-rows: 1fr;
+  grid-template-columns: 100px 1fr 60px;
+
+  &-priority {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    &__high {
+      color: green;
+    }
+
+    &__medium {
+      color: orange;
+    }
+
+    &__low {
+      color: red;
+    }
+  }
+
+  &-content {
+    display: flex;
+    flex-direction: row;
+    padding: 16px;
+    border: 1px solid black;
+    border-radius: 4px;
+
+    &__success {
+      background-color: rgba(0, 177, 106, 0.1);
+    }
+
+    &__failed {
+      background-color: rgba(242, 38, 19, 0.1);
+    }
+
+    &-info {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+
+      &-text {
+        width: 100%;
+        flex: 1;
+      }
+
+      &-date {
+        width: 100%;
+      }
+    }
+
+    &-buttons {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+    }
+  }
+
+  &-delete-btn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}

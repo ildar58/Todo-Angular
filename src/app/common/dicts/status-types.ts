@@ -1,14 +1,16 @@
+import {StatusType} from '../enums/status-type.enum';
+
 export const statusTypes = [
   {
-    alias: 'active',
-    name: 'Активные'
+    alias: StatusType.Active,
+    name: 'Активные',
   },
   {
-    alias: 'failed',
-    name: 'Отмененные'
+    alias: StatusType.Failed,
+    name: 'Отмененные',
   },
   {
-    alias: 'success',
-    name: 'Завершенные'
-  }
-]
+    alias: StatusType.Success,
+    name: 'Завершенные',
+  },
+];
