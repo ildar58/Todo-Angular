@@ -3,8 +3,8 @@
     <span class="filter-item-label">
       Фильтр по приоритету:
     </span>
-    <mat-form-field class="filter-item-control" appearance="outline" formControlName="priority">
-      <mat-select value="">
+    <mat-form-field class="filter-item-control" appearance="outline">
+      <mat-select value="" formControlName="priority">
         <mat-option *ngFor="let item of priorityLevels" [value]="item.alias">{{item.name}}</mat-option>
       </mat-select>
     </mat-form-field>
@@ -21,7 +21,7 @@
     </ng-container>
   </div>
 
-  <ng-container matSort>
+  <ng-container matSort (matSortChange)="handleChangeSort($event)">
     <div class="filter-item">
       <span class="filter-item-label">
         Сортировка по дате:
@@ -45,8 +45,8 @@
     <span class="filter-item-label">
       Фильтр по приоритету:
     </span>
-    <mat-form-field appearance="outline" class="filter-item-control full-width" formControlName="text">
-      <input matInput placeholder="Начните вводить...">
+    <mat-form-field appearance="outline" class="filter-item-control full-width">
+      <input matInput formControlName="text" placeholder="Начните вводить...">
     </mat-form-field>
   </div>
 </mat-card>
