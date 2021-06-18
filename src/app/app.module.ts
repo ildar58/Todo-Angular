@@ -50,7 +50,7 @@ registerLocaleData(localeRu);
       provide: LOCALE_ID,
       useValue: 'ru',
     },
-    ApiService
+    ApiService,
   ],
   bootstrap: [AppComponent],
 })

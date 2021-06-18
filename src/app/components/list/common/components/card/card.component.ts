@@ -22,8 +22,7 @@ export class CardComponent implements OnInit {
 
   public statusType: typeof StatusType = StatusType;
 
-  constructor(private readonly _todoService: TodoService) {
-  }
+  constructor(private readonly _todoService: TodoService) {}
 
   ngOnInit(): void {
     this.prioritySelectors = {
@@ -34,17 +33,17 @@ export class CardComponent implements OnInit {
 
     this.statusSelectors = {
       'card-content__success': this.task.status === StatusType.Success,
-      'card-content__failed': this.task.status === StatusType.Failed
-    }
+      'card-content__failed': this.task.status === StatusType.Failed,
+    };
 
-    console.log(this.statusSelectors)
+    console.log(this.statusSelectors);
   }
 
   public changeStatus(value: StatusType): void {
     this._todoService.updateTask({
       ...this.task,
-      status: value
-    })
+      status: value,
+    });
   }
 
   public deleteTask(): void {

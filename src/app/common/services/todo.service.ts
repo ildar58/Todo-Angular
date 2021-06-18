@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {TaskDto} from '../interfaces/task-dto.interface';
 import {ApiService} from './api.service';
@@ -7,7 +7,7 @@ import {StatusType} from '../enums/status-type.enum';
 import {priorityLevelsNumber} from '../dicts/priority-level-num';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class TodoService {
   private _tasks$$: BehaviorSubject<TaskDto[]> = new BehaviorSubject<TaskDto[]>([]);
@@ -18,7 +18,8 @@ export class TodoService {
   constructor(private readonly apiService: ApiService) {}
 
   public loadTasks(): void {
-    this.apiService.get<TaskDto[]>()
+    this.apiService
+      .get<TaskDto[]>()
       .toPromise()
       .then(tasks => {
         this._tasks$$.next(tasks);
@@ -27,7 +28,8 @@ export class TodoService {
   }
 
   public addTask(task: Task): void {
-    this.apiService.post<Task, TaskDto>(task)
+    this.apiService
+      .post<Task, TaskDto>(task)
       .toPromise()
       .then(task => {
         const currentTasks = this._tasks$$.getValue();
@@ -37,7 +39,8 @@ export class TodoService {
   }
 
   public updateTask(task: TaskDto): void {
-    this.apiService.put(task.id, task)
+    this.apiService
+      .put(task.id, task)
       .toPromise()
       .then(newTask => {
         const currentTasks = this._tasks$$.getValue();
@@ -45,12 +48,13 @@ export class TodoService {
 
         currentTasks.splice(index, 1, newTask);
         this._tasks$$.next(currentTasks);
-        this.filterTask()
+        this.filterTask();
       });
   }
 
   public deleteTask(id: number): void {
-    this.apiService.delete<TaskDto>(id)
+    this.apiService
+      .delete<TaskDto>(id)
       .toPromise()
       .then(() => {
         const currentTasks = this._tasks$$.getValue();
@@ -72,7 +76,7 @@ export class TodoService {
       } else {
         return priorityFilter === task.priority;
       }
-    }
+    };
 
     const filterByStatus = task => {
       const statusFilter = this.cachedConditions.statusTypes;
@@ -81,7 +85,7 @@ export class TodoService {
       const isSuccess = statusFilter[StatusType.Success] && task.status === StatusType.Success;
 
       return isActive || isFailed || isSuccess;
-    }
+    };
 
     const sortTask = (a: TaskDto, b: TaskDto) => {
       if (this.cachedConditions.sortByDate !== '') {
@@ -105,7 +109,7 @@ export class TodoService {
       }
 
       return 0;
-    }
+    };
 
     const filterByText = task => {
       const textFilter = this.cachedConditions.text;
@@ -113,17 +117,15 @@ export class TodoService {
       if (!textFilter) {
         return true;
       } else {
-        return (task.text.indexOf(textFilter) !== -1);
+        return task.text.indexOf(textFilter) !== -1;
       }
-    }
+    };
 
     const filterTask = task => {
       return filterByPriority(task) && filterByStatus(task) && filterByText(task);
-    }
+    };
 
     const tasks = this._tasks$$.getValue();
     this._filteredTasks$$.next(tasks.filter(filterTask).sort(sortTask));
   }
-
-
 }

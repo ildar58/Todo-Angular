@@ -9,12 +9,12 @@ import {TodoService} from '../../common/services/todo.service';
 @Component({
   selector: 'todo-filters',
   templateUrl: './filters.component.html',
-  styleUrls: ['./filters.component.scss']
+  styleUrls: ['./filters.component.scss'],
 })
 export class FiltersComponent extends AppComponentClass implements OnInit {
   public priorityLevels = {
     ...priorityLevels,
-    'all': 'Любое',
+    all: 'Любое',
   };
   public statusTypes = statusTypes;
   public filterForm: FormGroup = new FormGroup({
@@ -34,7 +34,7 @@ export class FiltersComponent extends AppComponentClass implements OnInit {
   }
 
   ngOnInit(): void {
-    this._observeSafe(this.filterForm.valueChanges).subscribe(value => this._todoService.filterTask(value))
+    this._observeSafe(this.filterForm.valueChanges).subscribe(value => this._todoService.filterTask(value));
     this._todoService.cachedConditions = this.filterForm.value;
   }
 
