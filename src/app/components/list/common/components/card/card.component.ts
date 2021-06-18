@@ -35,8 +35,6 @@ export class CardComponent implements OnInit {
       'card-content__success': this.task.status === StatusType.Success,
       'card-content__failed': this.task.status === StatusType.Failed,
     };
-
-    console.log(this.statusSelectors);
   }
 
   public changeStatus(value: StatusType): void {

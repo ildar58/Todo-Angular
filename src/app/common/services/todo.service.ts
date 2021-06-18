@@ -35,6 +35,7 @@ export class TodoService {
         const currentTasks = this._tasks$$.getValue();
 
         this._tasks$$.next([...currentTasks, task]);
+        this.filterTask();
       });
   }
 
@@ -62,11 +63,13 @@ export class TodoService {
 
         currentTasks.splice(index, 1);
         this._tasks$$.next(currentTasks);
+        this.filterTask();
       });
   }
 
   public filterTask(conditions?: any): void {
     this.cachedConditions = conditions || this.cachedConditions;
+    debugger
 
     const filterByPriority = task => {
       const priorityFilter = this.cachedConditions.priority;

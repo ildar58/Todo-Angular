@@ -41,8 +41,11 @@ export class FiltersComponent extends AppComponentClass implements OnInit {
   public handleChangeSort(event): void {
     const name = event.active;
     const value = event.direction;
-    const control = this.filterForm.get(name) as FormControl;
 
-    control.setValue(value);
+    if (name === 'sortByDate') {
+      this.filterForm.patchValue({[name]: value, sortByPriority: ''})
+    } else {
+      this.filterForm.patchValue({[name]: value, sortByDate: ''})
+    }
   }
 }
