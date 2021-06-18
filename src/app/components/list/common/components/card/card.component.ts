@@ -3,7 +3,7 @@ import {TaskDto} from '../../../../../common/interfaces/task-dto.interface';
 import {PriorityLevel} from '../../../../../common/enums/priority-level.enum';
 import {priorityLevels} from '../../../../../common/dicts/priority-levels';
 import {StatusType} from '../../../../../common/enums/status-type.enum';
-import {ApiService} from '../../../../../common/services/api.service';
+import {TodoService} from '../../../../../common/services/todo.service';
 
 @Component({
   selector: 'todo-card',
@@ -22,7 +22,7 @@ export class CardComponent implements OnInit {
 
   public statusType: typeof StatusType = StatusType;
 
-  constructor(private readonly _api: ApiService) {
+  constructor(private readonly _todoService: TodoService) {
   }
 
   ngOnInit(): void {
@@ -41,13 +41,13 @@ export class CardComponent implements OnInit {
   }
 
   public changeStatus(value: StatusType): void {
-    this._api.put({
+    this._todoService.updateTask({
       ...this.task,
       status: value
     })
   }
 
   public deleteTask(): void {
-    this._api.delete(this.task.id);
+    this._todoService.deleteTask(this.task.id);
   }
 }

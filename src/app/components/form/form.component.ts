@@ -1,9 +1,9 @@
-import {Component, ViewChild} from '@angular/core';
+import {Component} from '@angular/core';
 import {priorityLevels} from '../../common/dicts/priority-levels';
-import {FormControl, FormGroup, NgForm, Validators} from '@angular/forms';
-import {ApiService} from '../../common/services/api.service';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Task} from '../../common/interfaces/task.interface';
 import {StatusType} from '../../common/enums/status-type.enum';
+import {TodoService} from '../../common/services/todo.service';
 
 @Component({
   selector: 'todo-form',
@@ -12,10 +12,6 @@ import {StatusType} from '../../common/enums/status-type.enum';
 })
 export class FormComponent {
   public priorityLevels = priorityLevels;
-
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
-  @ViewChild('ngForm', {static: true}) ngForm: NgForm;
 
   public get priorityControl(): FormControl {
     return this.form.get('priority') as FormControl;
@@ -30,7 +26,7 @@ export class FormComponent {
     text: new FormControl(null, Validators.required),
   });
 
-  constructor(private readonly _api: ApiService) {}
+  constructor(private readonly _todoService: TodoService) {}
 
   public resetForm(): void {
     this.form.reset();
@@ -50,7 +46,7 @@ export class FormComponent {
         status: StatusType.Active,
       };
 
-      this._api.post(task);
+      this._todoService.addTask(task);
       this.resetForm();
     }
   }

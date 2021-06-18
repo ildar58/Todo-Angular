@@ -1,5 +1,5 @@
 <mat-card class="container">
-  <todo-card *ngFor="let item of tasks"
+  <todo-card *ngFor="let item of tasks$ | async"
              [task]="item">
   </todo-card>
 </mat-card>
