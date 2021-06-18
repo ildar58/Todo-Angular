@@ -15,11 +15,11 @@
     </div>
 
     <div class="card-content-buttons">
-      <button mat-icon-button color="primary" (click)="changeStatus(statusType.Success)">
+      <button mat-icon-button color="primary" (click)="changeStatus(statusType.Success)" *ngIf="task.status !== statusType.Success">
         <mat-icon>check</mat-icon>
       </button>
 
-      <button mat-icon-button color="warn" (click)="changeStatus(statusType.Failed)">
+      <button mat-icon-button color="warn" (click)="changeStatus(statusType.Failed)" *ngIf="task.status !== statusType.Failed">
         <mat-icon>clear</mat-icon>
       </button>
     </div>
